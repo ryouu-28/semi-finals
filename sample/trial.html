@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clickable Divs with Background Change</title>
+<style>
+    .box {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+        margin: 10px;
+        padding: 10px;
+        cursor: pointer; /* Add pointer cursor to indicate clickable */
+    }
+</style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+    // Get the container div
+    var container = document.getElementById('container');
+
+    // Function to create divs and handle switch cases
+    function createDivsAndSwitch() {
+        // Clear existing content in container
+        container.innerHTML = '';
+
+        // Create two divs
+        var div1 = document.createElement('div');
+        var div2 = document.createElement('div');
+
+        // Add classes to the divs for styling
+        div1.className = 'box';
+        div2.className = 'box';
+
+        // Set initial background colors
+        div1.style.backgroundColor = 'lightblue';
+        div2.style.backgroundColor = 'lightgreen';
+
+        // Add click event listeners to change background color
+        div1.addEventListener('click', function() {
+            div1.style.backgroundColor = getRandomColor();
+        });
+
+        div2.addEventListener('click', function() {
+            div2.style.backgroundColor = getRandomColor();
+        });
+
+        // Append divs to container
+        container.appendChild(div1);
+        container.appendChild(div2);
+    }
+
+    // Function to get a random color
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Call the function when the page loads
+    createDivsAndSwitch();
+</script>
+
+</body>
+</html>
